@@ -9,7 +9,6 @@ module Onesky
       FILE_FORMAT = 'RUBY_YAML'
       ENCODING    = 'UTF-8'
       DIR_PREFIX  = 'onesky_'
-      DEFAULT_LOCALE = 'en'
       APP_FILE = 'app.yml'
       DEVISE_FILE = 'devise.yml'
       TRANSLATION_NOTICE = <<-NOTICE
