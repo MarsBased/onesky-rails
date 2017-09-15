@@ -1,26 +1,14 @@
 namespace :onesky do
 
-  desc 'Upload string files of base locale to OneSky platform.'
-  task :upload => :environment do
+  desc 'Upload all string files locale to OneSky platform.'
+  task :upload_all => :environment do
     file_client.upload(locale_path)
     puts 'Done!'
   end
 
   desc 'Download translations from OneSky platform.'
-  task :download => :environment do
-    file_client.download(locale_path)
-    puts 'Done!'
-  end
-
-  desc 'Download base language translations from OneSky platform.'
-  task :download_base => :environment do
-    file_client.download(locale_path, base_only: true)
-    puts 'Done!'
-  end
-
-  desc 'Download all languages translations from OneSky platform.'
   task :download_all => :environment do
-    file_client.download(locale_path, all: true)
+    file_client.download(locale_path)
     puts 'Done!'
   end
 
