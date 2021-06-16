@@ -52,13 +52,12 @@ NOTICE
 
         locales.each do |locale|
           locale = locale.to_s
-          puts "#{locale_dir(locale)}/"
           onesky_locale = locale.gsub('_', '-')
           files.each do |file|
             response = @project.export_translation(source_file_name: file, locale: onesky_locale)
             if response.code == 200
               saved_file = save_translation(response, string_path, locale, file)
-              puts "  #{saved_file}"
+              puts saved_file
             end
           end
         end
@@ -79,11 +78,7 @@ NOTICE
       end
 
       def locale_file_name(file, to_locale)
-        if File.basename(file, '.*') == @base_locale.to_s
-          file.sub(@base_locale.to_s, to_locale)
-        else
-          file
-        end
+        file.sub(@base_locale.to_s, to_locale)
       end
 
       def get_default_locale_files(string_path)
@@ -98,7 +93,7 @@ NOTICE
       end
 
       def save_translation(response, string_path, locale, file)
-        locale_path = make_translation_dir(string_path, locale)
+        locale_path = string_path
         target_file = locale_file_name(file, locale)
 
         File.open(File.join(locale_path, target_file), 'w') do |f|
